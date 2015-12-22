@@ -2,34 +2,34 @@
 //  MainTabBarController.swift
 //  SimpleTVApp
 //
-//  Created by 大坪五郎 on 2015/12/18.
-//  Copyright © 2015年 Goromi Inc. All rights reserved.
+//  Created by 大坪五郎 on 2015/12/14.
+//  Copyright © 2015年 Next Inc. All rights reserved.
 //
 
 import UIKit
 
-class MainTabBarController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+class MainTabBarController: UITabBarController {
+    let firstViewController = FirstViewController(nibName: nil, bundle: nil)
+    let secondViewController = SecondViewController()
+    
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nil, bundle: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
-
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        firstViewController.tabBarItem = UITabBarItem(title: "First Tab", image: nil, tag: 1)
+        secondViewController.tabBarItem = UITabBarItem(title: "Second Tab", image: nil, tag: 2)
+        
+        // 配列をTabにセットします。
+        self.setViewControllers([firstViewController,secondViewController], animated: false)
+    }
+    
+    
 }
